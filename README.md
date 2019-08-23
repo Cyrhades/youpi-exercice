@@ -16,6 +16,14 @@ Copy all assets to /dist, then auto update the browser when a change is made in 
 Allow to visualize Markdown to HTML render, works with HMR
 Currently only works on md_visualize/src/README.md
 
+> gulp lint
+
+Execute linters for html, css & js
+
+> gulp ut
+
+Execute unit tests & cover for js
+
 
 
 ## Technologies utilisées
