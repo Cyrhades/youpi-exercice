@@ -51,7 +51,8 @@ task('copy-js', function () {
 
 // Copy assets for md editor
 task('copy-md-assets', function() {
-	return src(['src/**/*.css', 'src/assets/**/*.*'])
+	// return src(['src/**/*.css', 'src/assets/**/*.*']) // wrong assets dest ?
+	return src(['src/**/*.*', 'src/**/*.md', 'src/**/*.js', 'src/**/*.html'])
 		.pipe(dest('md_visualizer/dist/'));
 });
 
