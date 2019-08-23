@@ -59,6 +59,7 @@ html {
   background-image: linear-gradient(to right top, #386da8, #3375ac, #307cae, #3083b0, #338ab2, #318eb1, #3192b0, #3496af, #3298ab, #3299a6, #369ba1, #3b9c9c);
   color: #fff5ee;
   font-family: "Rubik", sans-serif;
+  transition: all .3s;
 }
 
 body {
@@ -68,6 +69,13 @@ body {
   background: url("assets/bg.png") repeat;
   display: flex;
   justify-content: center;
+}
+
+a, a:active, a:visited {
+  color: #ff833b;
+}
+a:hover {
+  color: #ff9659;
 }
 
 .container {
@@ -102,4 +110,20 @@ body {
 .tooltip_text.console {
   bottom: 20px;
   left: 100px;
+}
+
+.md {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px dashed black;
+  margin-top: 1em;
+  padding: 1em;
+}
+
+.md tr {
+  padding-bottom: .5em;
+}
+
+.md td {
+  min-width: 200px;
+  padding: .5em 1em;
 }

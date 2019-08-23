@@ -1,4 +1,6 @@
 //// Constants
+// const mdVisualizerSrc = 'md_visualizer/src/README.md';
+const mdVisualizerSrc = 'docs/README.md';
 
 // Plugins ressources
 const { dest, parallel, series, src, task, watch } 	= require('gulp'),
@@ -102,7 +104,7 @@ task('lint-js', function() {
 
 // Convert MD to HTML, & Direct injection, to enable HMR without temp files
 task('md-in-html', function() {
-  const converted = src(['md_visualizer/src/README.md']).pipe(markdown());
+  const converted = src([mdVisualizerSrc]).pipe(markdown());
 
   return src('md_visualizer/src/index.html')
     .pipe(inject(converted, {
@@ -122,7 +124,7 @@ task('start-md-watch', function () {
   });
 
   // Watch every tech
-	const watcherMD = watch('md_visualizer/src/README.md');
+	const watcherMD = watch(mdVisualizerSrc);
 
   // Update when necessary
   // watcherMD.on('change', series('convert-md', 'update-html'));
