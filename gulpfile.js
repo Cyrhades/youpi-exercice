@@ -5,10 +5,11 @@ const { dest, parallel, series, src, task, watch } 	= require('gulp'),
   colors      = require('ansi-colors'),
   browserSync = require('browser-sync').create();
   fancyLog    = require('fancy-log'),
+  minifycss 	= require('gulp-clean-css'),
   eslint      = require('gulp-eslint'),
   htmllint    = require('gulp-htmllint'),
-  jestcli     = require('jest-cli'),
-  stylelint   = require('gulp-stylelint')
+  stylelint   = require('gulp-stylelint'),
+  jestcli     = require('jest-cli')
 ;
 
 
@@ -20,6 +21,15 @@ task('copy-assets', function() {
 	return src(['src/**/*.*', '!node_modules/**'])
 		.pipe(dest('dist/'));
 });
+
+// Copy all vendor assets to dist
+// Possibility to concat all in one, but it might be more obscure for students
+task('copy-minify-css-vendors', function() {
+	return src(['node_modules/normalize.css/normalize.css'])
+    .pipe(minifycss())
+		.pipe(dest('dist/css/vendors/'));
+});
+
 
 // Copy css & notify browser sync
 task('copy-css', function() {
@@ -44,6 +54,8 @@ task('copy-js', function () {
 		.pipe(dest('dist/'))
 		.pipe(browserSync.stream());
 });
+
+task('copy-vendors', parallel('copy-minify-css-vendors'));
 
 // Lint css & check for errors
 task('lint-css', function lintCssTask() {
@@ -107,7 +119,7 @@ task('ut-js', () =>
 
 // Default tesk, executed when using 'gulp'
 //  	Capy all assets to dist
-task('default', parallel('copy-assets'));
+task('default', parallel('copy-assets', 'copy-vendors'));
 
 //  Watch : copy all files, and then update when necessary
 task('watch', series('default', 'start-watch'));

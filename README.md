@@ -17,6 +17,9 @@ Copy all assets to /dist, then auto update the browser when a change is made in 
 gulp / gulp-cli // accès à gulp
 yarn // Alternative à npm, plus rapide
 
+#### Vendors
+##### Normalize.css
+https://github.com/necolas/normalize.css/
 
 #### HMR
 Browser sync package
@@ -47,6 +50,9 @@ Existing config
 https://www.npmjs.com/package/stylelint-config-airbnb
 
 Fix deprecated dependencies, add stylelint-scss & stylelint-order
+
+#### Css minify
+https://www.npmjs.com/package/gulp-clean-css
 
 #### JS linter
 Gulp package
