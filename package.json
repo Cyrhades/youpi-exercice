@@ -18,6 +18,8 @@
     "gulp-cli": "^2.2.0",
     "gulp-eslint": "^6.0.0",
     "gulp-htmllint": "^0.0.16",
+    "gulp-inject": "^5.0.4",
+    "gulp-markdown": "^5.0.0",
     "gulp-stylelint": "^9.0.0",
     "gulp-uglify": "^3.0.2",
     "jest-cli": "^24.9.0",

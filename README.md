@@ -11,6 +11,12 @@ Copy all assets to /dist
 
 Copy all assets to /dist, then auto update the browser when a change is made in /src
 
+> gulp watch-md
+
+Allow to visualize Markdown to HTML render, works with HMR
+Currently only works on md_visualize/src/README.md
+
+
 
 ## Technologies utilisées
 ### Packages
@@ -97,6 +103,12 @@ Set up through package.json scripts, or directly call jest-cli.runCLI in gulpfil
 
 #### Js minify
 https://www.npmjs.com/package/gulp-uglify
+
+#### Doc
+Compile MD to html
+https://www.npmjs.com/package/gulp-markdown
+Inject compiled html to a webpage, and enable HMR
+https://www.npmjs.com/package/gulp-inject
 
 ### Others
 Editor Config

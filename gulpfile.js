@@ -8,6 +8,8 @@ const { dest, parallel, series, src, task, watch } 	= require('gulp'),
   minifycss 	= require('gulp-clean-css'),
   eslint      = require('gulp-eslint'),
   htmllint    = require('gulp-htmllint'),
+  inject      = require('gulp-inject'),
+  markdown    = require('gulp-markdown'),
   stylelint   = require('gulp-stylelint'),
   uglify 			= require('gulp-uglify'),
   jestcli     = require('jest-cli')
@@ -45,6 +47,12 @@ task('copy-js', function () {
     ])
 		.pipe(dest('dist/'))
 		.pipe(browserSync.stream());
+});
+
+// Copy assets for md editor
+task('copy-md-assets', function() {
+	return src(['src/**/*.css', 'src/assets/**/*.*'])
+		.pipe(dest('md_visualizer/dist/'));
 });
 
 // Copy all css vendor assets to dist
@@ -91,6 +99,35 @@ task('lint-js', function() {
     .on('end', notifyJsIsOk );
 });
 
+// Convert MD to HTML, & Direct injection, to enable HMR without temp files
+task('md-in-html', function() {
+  const converted = src(['md_visualizer/src/README.md']).pipe(markdown());
+
+  return src('md_visualizer/src/index.html')
+    .pipe(inject(converted, {
+       starttag: '<!-- inject:mymd -->',
+       transform: function(filepath, file) {
+         return file.contents.toString();
+       }
+    }))
+   .pipe(dest('md_visualizer/dist'))
+   .pipe(browserSync.stream());
+});
+
+// Create MD watcher
+task('start-md-watch', function () {
+  browserSync.init({
+      server: "./md_visualizer/dist"
+  });
+
+  // Watch every tech
+	const watcherMD = watch('md_visualizer/src/README.md');
+
+  // Update when necessary
+  // watcherMD.on('change', series('convert-md', 'update-html'));
+  watcherMD.on('change', parallel('md-in-html'));
+});
+
 // Create watcher
 task('start-watch', function () {
   browserSync.init({
@@ -131,6 +168,9 @@ task('default', parallel('copy-assets', 'copy-vendors'));
 
 //  Watch : copy all files, and then update when necessary
 task('watch', series('default', 'start-watch'));
+
+//  Watch-md : convert MD file, inject it into HTML, and update when necessary
+task('watch-md', series('copy-md-assets', 'md-in-html', 'start-md-watch'));
 
 // Run all linters & UT
 task('lint',    parallel('lint-html', 'lint-css', 'lint-js'));
