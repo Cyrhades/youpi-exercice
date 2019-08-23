@@ -13,6 +13,7 @@ Dans ce dossier, vous trouverez les différents fichiers de documentation (.md) 
 | *correction-step-X.md* 	| Les corrections partielles, le numéro varie à chaque étape, par exemple :   <ul><li>*correction-step-1.md*</li><li>*correction-step-2.md*</li></ul> 	|
 | *correction.md* 	| Le corrigé complet 	|
 | *correction-sup-X.md* 	| Les corrigés des exercices supplémentaires 	|
+| *prof.md* 	| Les notions à aborder par le professeur au cours de l'exercice 	|
 
 
 
