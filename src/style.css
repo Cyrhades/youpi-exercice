@@ -71,9 +71,12 @@ body {
   justify-content: center;
 }
 
-a, a:active, a:visited {
+a,
+a:active,
+a:visited {
   color: #ff833b;
 }
+
 a:hover {
   color: #ff9659;
 }
@@ -113,7 +116,7 @@ a:hover {
 }
 
 .md {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, .3);
   border: 1px dashed black;
   margin-top: 1em;
   padding: 1em;
