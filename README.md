@@ -3,6 +3,13 @@ Boilerplate pour la rédaction d'exercices
 
 ## Commandes
 
+> gulp
+
+Copy all assets to /dist
+
+> gulp watch
+
+Copy all assets to /dist, then auto update the browser when a change is made in /src
 
 
 ## Technologies utilisées
