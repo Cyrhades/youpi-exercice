@@ -1,0 +1,8 @@
+{
+  "name": "boilerplate-exercice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:youpiwaza/boilerplate-exercice.git",
+  "author": "Max <masamune.code@gmail.com>",
+  "license": "MIT"
+}
