@@ -21,6 +21,9 @@ yarn // Alternative à npm, plus rapide
 ##### Normalize.css
 https://github.com/necolas/normalize.css/
 
+##### JQuery
+https://www.npmjs.com/package/jquery
+
 #### HMR
 Browser sync package
 https://www.browsersync.io/docs/gulp
@@ -92,6 +95,8 @@ Set up through package.json scripts, or directly call jest-cli.runCLI in gulpfil
 
 // https://medium.com/@ryanblahnik/setting-up-testing-with-jest-and-node-js-b793f1b5621e
 
+#### Js minify
+https://www.npmjs.com/package/gulp-uglify
 
 ### Others
 Editor Config

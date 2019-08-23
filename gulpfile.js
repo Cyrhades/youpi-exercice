@@ -9,6 +9,7 @@ const { dest, parallel, series, src, task, watch } 	= require('gulp'),
   eslint      = require('gulp-eslint'),
   htmllint    = require('gulp-htmllint'),
   stylelint   = require('gulp-stylelint'),
+  uglify 			= require('gulp-uglify'),
   jestcli     = require('jest-cli')
 ;
 
@@ -21,15 +22,6 @@ task('copy-assets', function() {
 	return src(['src/**/*.*', '!node_modules/**'])
 		.pipe(dest('dist/'));
 });
-
-// Copy all vendor assets to dist
-// Possibility to concat all in one, but it might be more obscure for students
-task('copy-minify-css-vendors', function() {
-	return src(['node_modules/normalize.css/normalize.css'])
-    .pipe(minifycss())
-		.pipe(dest('dist/css/vendors/'));
-});
-
 
 // Copy css & notify browser sync
 task('copy-css', function() {
@@ -55,7 +47,23 @@ task('copy-js', function () {
 		.pipe(browserSync.stream());
 });
 
-task('copy-vendors', parallel('copy-minify-css-vendors'));
+// Copy all css vendor assets to dist
+// Possibility to concat all in one, but it might be more obscure for students
+task('copy-minify-css-vendors', function() {
+	return src(['node_modules/normalize.css/normalize.css'])
+    // .pipe(minifycss())
+		.pipe(dest('dist/css/vendors/'));
+});
+
+// Copy all js vendor assets to dist
+// Possibility to concat all in one, but it might be more obscure for students
+task('copy-minify-js-vendors', function() {
+	return src(['node_modules/jquery/dist/jquery.min.js'])
+    // .pipe(uglify())
+		.pipe(dest('dist/js/vendors/'));
+});
+
+task('copy-vendors', parallel('copy-minify-css-vendors', 'copy-minify-js-vendors'));
 
 // Lint css & check for errors
 task('lint-css', function lintCssTask() {
