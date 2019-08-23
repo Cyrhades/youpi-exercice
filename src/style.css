@@ -74,6 +74,28 @@ body {
   width: 90%;
 }
 
-
-
-/* Your css :) */
+/* Tooltip text */
+.tooltipText {
+  background-color: rgba(0,0,0,.5);
+  border-radius: .5em;
+  color: #fff;
+  line-height: 1.4em;
+  padding: 1em;
+  position: absolute;
+  z-index: 1;
+}
+.tooltipText.bottomLeftArrow::after {
+  border-color: rgba(0,0,0,.5) transparent transparent transparent;
+  border-style: solid;
+  border-width: 20px 20px 0 20px;
+  bottom: -20px;
+  content: "";
+  height: 0;
+  left: 50px;
+  position: absolute;
+  width: 0;
+}
+.tooltipText.console {
+  bottom: 20px;
+  left: 100px;
+}
