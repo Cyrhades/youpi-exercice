@@ -7,6 +7,7 @@
   "license": "MIT",
   "devDependencies": {
     "ansi-colors": "^4.1.1",
+    "browser-sync": "^2.26.7",
     "eslint": "^6.2.1",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
