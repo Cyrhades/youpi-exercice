@@ -15,7 +15,7 @@ charset = utf-8
 
 # 4 space indentation
 indent_style = space
-indent_size = 4
+indent_size = 2
 
 
 # Indentation override for all js & jsons
